@@ -1,5 +1,2 @@
-# 该项目只使用 Python 标准库，无需安装额外依赖
-# Python >= 3.8 即可运行
-#
-# 如需打包为 .exe，安装以下工具：
+pynput>=1.7
 pyinstaller>=5.0
