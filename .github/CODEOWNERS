@@ -1,0 +1,9 @@
+# 所有文件的负责人
+* @diqing233
+
+# 主程序
+translator.py @diqing233
+
+# 构建相关
+build.bat @diqing233
+requirements.txt @diqing233
