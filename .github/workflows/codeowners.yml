@@ -1,22 +1,23 @@
-name: CODEOWNERS 验证
+name: CODEOWNERs Superpowers
 
 on:
-  push:
-    branches: [ main, master ]
   pull_request:
-    branches: [ main, master ]
+    types: [opened, synchronize, reopened, review_requested]
+  pull_request_review:
+    types: [submitted]
 
 jobs:
-  validate-codeowners:
+  codeowners-superpowers:
     runs-on: ubuntu-latest
-    name: 验证 CODEOWNERS 文件
+    name: 检查所有代码负责人是否已审批
     steps:
       - name: 检出代码
         uses: actions/checkout@v4
 
-      - name: 验证 CODEOWNERS
-        uses: mszostok/codeowners-validator@v0.7.4
+      - name: Verify CODEOWNERs and Changed Files
+        uses: endersonmenezes/codeowners-superpowers@main
         with:
-          checks: "files,syntax,duppatterns"
-          # 如需验证 GitHub 用户是否存在，取消注释并添加 Token：
-          # github_access_token: "${{ secrets.GITHUB_TOKEN }}"
+          super_power: "require-all-codeowners"
+          gh-token: ${{ secrets.GITHUB_TOKEN }}
+          pr_number: ${{ github.event.number }}
+          owner_and_repository: ${{ github.repository }}
